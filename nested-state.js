@@ -1,5 +1,6 @@
 const { default: produce } = require("immer");
-const { createStore } = require("redux");
+const { createStore, applyMiddleware } = require("redux");
+const { default: logger } = require("redux-logger");
 
 const initialState = {
   name: "Vishwas",
@@ -42,10 +43,10 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(logger));
 console.log("Initial state", store.getState());
 const unsubscribe = store.subscribe(() => {
-  console.log("Updated States", store.getState());
+  //   console.log("Updated States", store.getState());
 });
 store.dispatch(updateInfo("Sekhertek road 8", "Dhaka"));
 unsubscribe();
