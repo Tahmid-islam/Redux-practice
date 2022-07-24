@@ -63,7 +63,7 @@ const reducer = (state = initialState, action) => {
         users: action.payload,
         error: "",
       };
-    case FETCH_USERS_SUCCEEDED:
+    case FETCH_USERS_FAILED:
       return {
         loading: false,
         users: [],
